@@ -1,0 +1,17 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+@media (max-width:999px){
+    .div1{
+        text-align: center;
+    }
+    .div2{
+        display: none;
+    }
+    
+
+}
