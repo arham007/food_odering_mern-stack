@@ -9,6 +9,8 @@ import Cart from '../Cart';
 import Checkout from '../Checkout';
 
 const Navbar = () => {
+  let token=localStorage.getItem("token");
+  let user=localStorage.getItem("user")
   const data=useContext(CartContext)
   console.log(data)
   const [open,setOpen]=useState(false)
@@ -38,7 +40,14 @@ const Navbar = () => {
     <a className="border-nav" style={{color:"black",cursor:"pointer"}} onClick={()=> history.push("/")} >Menu</a>
     <a className="border-nav" style={{color:"black",cursor:"pointer"}} >Offers</a>
     <a className="border-nav" style={{color:"black",cursor:"pointer"}} >My Orders</a>
+    {token && user ? 
+    <a className="border-nav" style={{color:"black",cursor:"pointer"}} onClick={()=>{
+      localStorage.clear()
+      history.push("/")
+    }} >Logout</a>  
+    :
     <a className="border-nav" style={{color:"black",cursor:"pointer"}} onClick={()=> history.push("/login")}  >Login</a>
+  }
     <a class="nav-link waves-effect" style={{cursor:"pointer"}} onClick={()=>{
       data.dispatch({
         type:"NAV",
