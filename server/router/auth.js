@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express=require("express");
 const router=express.Router();
 const mongoose=require("mongoose");
@@ -38,8 +39,8 @@ router.post("/signup",(req,res)=>{
             let transport=nodemailer.createTransport ({
                 service:'gmail',
                 auth:{
-                    user:'arhamkhancs99@gmail.com',
-                    pass:'03171070016'
+                    user:process.env.EMAIL,
+                    pass:process.env.PASSWORD
                 }
             });
             let mailOption={
