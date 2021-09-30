@@ -2,12 +2,18 @@ import React,{useContext, useState} from 'react'
 import {CartContext} from '../Global/CartContext'
 
 
-const Arham = () => {
+const Orderplace = () => {
 	let {shoppingCart,qty,totalPrice}=useContext(CartContext)
   const [address,setAdress]=useState("")
+  const [disable,setDisable]=useState(false)
   const [phone,setPhone]=useState("")
-  const [notetorider,setnotetorider]=useState("")
- const orderPlaced=(e)=>{
+  const [notetorestaurant,setnotetorestaurant]=useState("")
+  let name=JSON.parse(localStorage.getItem("user"))
+  
+ 
+
+ 
+  const orderPlaced=(e)=>{
    e.preventDefault()
   fetch("http://localhost:4000/placeorder",{
     method:"Post",
@@ -19,86 +25,63 @@ const Arham = () => {
       items:shoppingCart,
       address:address,
       phone:phone,
-      notetorider:notetorider
+      note:notetorestaurant
     })
   }).then(res => res.json())
   .then(data => console.log(data))
   .catch(err => console.log(err))
  }
+ 
   return (
 		<div>
 	
 
-  {/* <!--Main layout--> */}
   <main class="mt-5 pt-4">
     <div class="container wow fadeIn">
 
-      {/* <!-- Heading --> */}
       <h2 class="my-5 h2 text-center">Checkout form</h2>
 
-      {/* <!--Grid row--> */}
+
       <div class="row">
 
-        {/* <!--Grid column--> */}
+      
         <div class="col-md-8 mb-4">
 
-          {/* <!--Card--> */}
           <div class="card">
 
-            {/* <!--Card content--> */}
             <form class="card-body" >
 
-              {/* <!--Grid row--> */}
-              <div class="row">
+ 
+        
 
-                {/* <!--Grid column--> */}
-                <div class="col-md-6 mb-2">
-
-                  {/* <!--firstName--> */}
-                  <div class="md-form ">
+     
+                  <div class="md-form mb-5" >
                     <label for="firstName" style={{fontSize:"16px",fontWeight:"600"}} class="">First name</label>
-                    <input type="text"  id="firstName" style={{fontSize:"14px"}}  class="form-control" />
+                    <input type="text" value={name.name} id="firstName" style={{fontSize:"14px"}}  class="form-control" />
                   </div>
 
-                </div>
-                {/* <!--Grid column--> */}
-
-                {/* <!--Grid column--> */}
-                <div class="col-md-6 mb-2">
-
-                  {/* <!--lastName--> */}
-                  <div class="md-form">
-                    <label for="lastName" class="" style={{fontSize:"16px",fontWeight:"600"}}>Last name</label>
-                    <input style={{fontSize:"14px"}}  type="text" id="lastName" class="form-control" />
+                  <div class="md-form mb-5" >
+                    <label for="email" style={{fontSize:"16px",fontWeight:"600"}} class="">Email</label>
+                    <input type="text" value={name.email} id="firstName" style={{fontSize:"14px"}}  class="form-control" />
                   </div>
 
-                </div>
-                {/* <!--Grid column--> */}
-
-              </div>
-              {/* <!--Grid row--> */}
-
-              {/* <!--Username--> */}
+               
+              
               
 
-              {/* <!--email--> */}
-              
-
-              {/* <!--address--> */}
               <div class="md-form mb-5">
                 <label for="address" class="" style={{fontSize:"16px",fontWeight:"600"}}>Address</label>
                 <input onChange={(e)=> setAdress(e.target.value)} style={{fontSize:"14px"}}  type="text" id="address" class="form-control" placeholder="1234 Main St" />
               </div>
 
-              {/* <!--address-2--> */}
               <div class="md-form mb-5">
                 <label for="address-2" style={{fontSize:"16px",fontWeight:"600"}} class="">Phone</label>
-                <input style={{fontSize:"14px"}} onChange={(e)=> setPhone(e.target.value)}  type="tel" id="address-2" class="form-control" placeholder="Apartment or suite" />
+                <input style={{fontSize:"14px"}} onChange={(e)=> setPhone(e.target.value)}  type="number" id="address-2" class="form-control" placeholder="Apartment or suite" />
               </div>
 
 			  <div class="md-form mb-5">
                 <label for="address-2" style={{fontSize:"16px",fontWeight:"600"}} 	 class="">Note to Rider</label>
-                <textarea  onChange={(e)=> setnotetorider(e.target.value)}   style={{height:"120px",fontSize:"16px"}} class="form-control" placeholder="Apartment or suite" ></textarea>
+                <textarea  onChange={(e)=> setnotetorestaurant(e.target.value)}   style={{height:"120px",fontSize:"16px"}} class="form-control" placeholder="Apartment or suite" ></textarea>
               </div>
 
             
@@ -106,26 +89,32 @@ const Arham = () => {
 
              
               <hr class="mb-4" />
-              <button onClick={orderPlaced} style={{padding:"10px 0",fontSize:"16px",backgroundColor:"#FE5F1E",color:"#fff"}} class="btn  btn-lg btn-block" type="submit">Place Order</button>
+            
+             {
+               address && phone ? 
+               <button id="placeorderbtn" onClick={orderPlaced} style={{padding:"10px 0",fontSize:"16px",backgroundColor:"#FE5F1E",color:"#fff"}} class="btn  btn-lg btn-block" type="submit">Place Order</button>
+               :
+               <button id="placeorderbtn" disabled style={{padding:"10px 0",fontSize:"16px",backgroundColor:"#FE5F1E",color:"#fff"}} class="btn  btn-lg btn-block" >Place Order</button>
+             }
+            
+        
 
             </form>
 
           </div>
-          {/* <!--/.Card--> */}
+      
 
         </div>
-        {/* <!--Grid column--> */}
-
-        {/* <!--Grid column--> */}
+     
         <div class="col-md-4 mb-4">
 
-          {/* <!-- Heading --> */}
+          
           <h4 class="d-flex justify-content-between align-items-center mb-3">
             <span class="text-muted">Your cart</span>
             <span class="badge badge-secondary badge-pill" style={{backgroundColor:"#FE5F1E"}}>{qty}</span>
           </h4>
 
-          {/* <!-- Cart --> */}
+     
           <ul class="list-group mb-3 z-depth-1">
          {
 			 shoppingCart.map((item,i)=>{
@@ -170,4 +159,4 @@ const Arham = () => {
 	)
 }
 
-export default Arham
+export default Orderplace

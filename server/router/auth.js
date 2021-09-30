@@ -551,18 +551,19 @@ router.get("/fastfood",(req,res)=>{
  })
  
 router.post("/placeorder",requireLogin,(req,res)=>{
-    const {phone , address , name , notetorider}=req.body
+    const {phone , address , note}=req.body
     if(!phone || !address ){
         res.status(401).json({error:"Please Fill all the fields"})
     }
+
+    req.user.password=undefined
     
-    // console.log(req.body)
     const orders=new Order({
         user:req.user,
         items:req.body.items,
         address:address,
         phone:phone,
-        note:notetorider
+        note:note
 
     })
     orders.save()

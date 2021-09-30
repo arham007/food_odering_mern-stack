@@ -2,7 +2,7 @@ const express = require('express')
 const port = 4000;
 const cors=require("cors")
 const mongoose = require('mongoose');
-const {MONGO_URI}=require("./keys")
+const {MONGO_URI}=require("./key/keys")
 const app = express();
 app.use(cors("*"))
 app.use(express.json())

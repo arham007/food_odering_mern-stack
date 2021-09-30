@@ -133,7 +133,7 @@ const Cart=()=>{
       </li>
     </ul>
 
-    <button type="button" onClick={()=> history.push("/arham")} class="btn btn-primary btn-block" style={{backgroundColor:"#FE5F1E",border:"none",padding:"8px 0",fontSize:"13px"}}>go to checkout</button>
+    <button type="button" onClick={()=> history.push("/checkout")} class="btn btn-primary btn-block" style={{backgroundColor:"#FE5F1E",border:"none",padding:"8px 0",fontSize:"13px"}}>go to checkout</button>
 
   </div>
 </div>

@@ -14,7 +14,7 @@ import Beverage from '../Components/Beverage';
 import Cart from '../Components/Cart';
 
 import Checkout from '../Components/Checkout';
-import Arham from '../Components/Arham';
+import Orderplace from '../Components/Orderplace';
 import Order from '../Components/Order';
 
 
@@ -35,10 +35,10 @@ const Router = () => {
                 <Route exact path="/bbq" component={Bbq} />
                 <Route exact path="/extra" component={Extra} />
                 <Route exact path="/cart" component={Cart} />
-                <Route exact path="/checkout" component={Checkout} />
+                <Route exact path="/ordercart" component={Checkout} />
                 <Route exact path="/beverage" component={Beverage} />
                 <Route exact path="/reset/:token" component={Newpassword} />
-                <Route exact path="/arham" component={Arham} />
+                <Route exact path="/checkout" component={Orderplace} />
                 <Route exact path="/order" component={Order} />
        
             </BrowserRouter>
