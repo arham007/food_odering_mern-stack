@@ -3,7 +3,9 @@ import Navbar from './navbar/Navbar'
 import Summary from "./Table"
 
 const Order = () => {
-
+    useEffect(()=>{
+        window.history.forward()
+    },[])
    
  
     

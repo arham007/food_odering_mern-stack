@@ -42,6 +42,9 @@ const Orderplace = () => {
 
     setOpen(false);
   };
+  // function preventBack() { window.history.forward(); }  
+  // setTimeout("preventBack()", 0);  
+  // window.onunload = function () { null };  
  
   const orderPlaced=(e)=>{
     e.preventDefault()
@@ -74,7 +77,10 @@ const Orderplace = () => {
     setTimeout(()=>{
 
       history.push("/order")
-    },4000)
+    },2000)
+      window.history.forward()
+    
+   
     
     }
   })

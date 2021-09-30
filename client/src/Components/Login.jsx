@@ -56,6 +56,7 @@ const Login = () => {
     .then(body =>{
       localStorage.setItem("token",body.token)
       localStorage.setItem("user",JSON.stringify(body.user))
+     
 
       history.push("/")
       if(body.error){

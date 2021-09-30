@@ -12,6 +12,7 @@ import Bbq from '../Components/Bbq';
 import Extra from '../Components/Extra';
 import Beverage from '../Components/Beverage';
 import Cart from '../Components/Cart';
+import Privateroute from './Privateroute';
 
 import Checkout from '../Components/Checkout';
 import Orderplace from '../Components/Orderplace';
@@ -35,11 +36,11 @@ const Router = () => {
                 <Route exact path="/bbq" component={Bbq} />
                 <Route exact path="/extra" component={Extra} />
                 <Route exact path="/cart" component={Cart} />
-                <Route exact path="/ordercart" component={Checkout} />
+                <Privateroute exact path="/ordercart" component={Checkout} />
                 <Route exact path="/beverage" component={Beverage} />
                 <Route exact path="/reset/:token" component={Newpassword} />
-                <Route exact path="/checkout" component={Orderplace} />
-                <Route exact path="/order" component={Order} />
+                <Privateroute exact path="/checkout" component={Orderplace} />
+                <Privateroute exact path="/order" component={Order} />
        
             </BrowserRouter>
             
