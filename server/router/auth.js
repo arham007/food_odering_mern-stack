@@ -9,7 +9,7 @@ const bycrypt=require("bcryptjs");
 const crypto=require("crypto");
 const nodemailer=require("nodemailer");
 const jwt=require("jsonwebtoken");
-const { JWT_SECRET } = require("../keys");
+const { JWT_SECRET } = require("../key/keys");
 const requireLogin=require("../middleware/requireLogin")
 const Order=mongoose.model("Order")
 
