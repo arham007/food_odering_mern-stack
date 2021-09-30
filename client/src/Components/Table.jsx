@@ -1,11 +1,8 @@
 import * as React from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+
+import { Link } from 'react-router-dom';
+import moment from "moment"
+
 
 
 
@@ -13,46 +10,58 @@ import Paper from '@mui/material/Paper';
 
 
 function Summary() {
-    function createData(name, calories, fat, carbs, protein) {
-        return { name, calories, fat, carbs, protein };
+  let [orders,setOders]=React.useState()
+  React.useEffect(()=>{
+    fetch("http://localhost:4000/placedorder",{
+      method:"Get",
+      headers:{
+        "X-Requested-With":"XMLHttpRequest",
+        'Content-Type':"application/json",
+        'Authorization':localStorage.getItem("token"),
       }
-      
-    const rows = [
-        createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-        createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-        createData('Eclair', 262, 16.0, 24, 6.0),
-      ];
+    })
+    .then(res => res.json())
+    .then(({orders}) => setOders(orders))
+    .catch(err => console.log(err))
+  },[])
+
 
   return (
       <div className="container">
 
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="caption table">
+<div className="table-responsive-lg">
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col" style={{fontSize:"18px"}} >Orders</th>
+      <th scope="col" style={{fontSize:"18px"}} >Address</th>
+      <th scope="col" style={{fontSize:"18px"}} >Time</th>
       
-        <TableHead>
-          <TableRow>
-            <TableCell style={{fontSize:"16px",fontWeight:"bold",width:"40%"}} >Orders</TableCell>
-            <TableCell style={{fontSize:"16px",fontWeight:"bold"}} >Address</TableCell>
-            <TableCell style={{fontSize:"16px",fontWeight:"bold"}} >Time</TableCell>
-            {/* <TableCell style={{fontSize:"16px",fontWeight:"bold"}} align="right">Carbs&nbsp;(g)</TableCell> */}
-            {/* <TableCell style={{fontSize:"16px",fontWeight:"bold"}} align="right">Protein&nbsp;(g)</TableCell> */}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.name}>
-              <TableCell style={{fontSize:"16px"}} >
-                {row.name}
-              </TableCell>
-              <TableCell style={{fontSize:"16px"}}  >{row.calories}</TableCell>
-              <TableCell style={{fontSize:"16px"}}>{row.fat}</TableCell>
-              {/* <TableCell style={{fontSize:"16px"}} align="right">{row.carbs}</TableCell> */}
-              {/* <TableCell style={{fontSize:"16px"}} align="right">{row.protein}</TableCell> */}
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    </tr>
+  </thead>
+  <tbody>
+    {
+      
+      orders ? 
+      orders.map((item,i)=>{
+        return(
+          <tr key={i}>
+          <th style={{fontSize:"16px"}}    scope="row"><Link>{item._id}</Link></th>
+          <td style={{fontSize:"16px"}}   >{item.address}</td>
+          <td style={{fontSize:"16px"}}   >{moment(item.createdAt).calendar()}</td>
+          
+        </tr>
+        )
+      })
+      :
+      <div />
+    } 
+   
+  </tbody>
+</table>
+    </div>
+
           </div>
   );
 }

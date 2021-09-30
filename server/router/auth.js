@@ -567,9 +567,18 @@ router.post("/placeorder",requireLogin,(req,res)=>{
 
     })
     orders.save()
-    .then(data => res.status(200).json({message:data}))
+    .then(data => res.status(200).json({message:"Order Place Successfully"}))
     .catch(err => console.log(err))
 
+})
+
+router.get("/placedorder",requireLogin,(req,res)=>{
+    Order.find({"user":req.user._id , "status":"order_placed"}).sort({'createdAt':-1})
+    
+    .then(orders => {
+        res.json({orders})
+    })
+    .catch(err => console.log(err))
 })
 
 

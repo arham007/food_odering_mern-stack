@@ -1,20 +1,51 @@
 import React,{useContext, useState} from 'react'
 import {CartContext} from '../Global/CartContext'
+import {useHistory} from "react-router-dom"
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+import { makeStyles } from '@material-ui/core/styles';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+    '& > * + *': {
+      marginTop: theme.spacing(2),
+    },
+  },
+}));
 
 
 const Orderplace = () => {
-	let {shoppingCart,qty,totalPrice}=useContext(CartContext)
+	let {shoppingCart,qty,totalPrice ,dispatch}=useContext(CartContext)
   const [address,setAdress]=useState("")
-  const [disable,setDisable]=useState(false)
+  const history=useHistory()
+  const [open, setOpen] = useState(false);
+  const [click,setClick]=useState("");
+  const classes = useStyles();
   const [phone,setPhone]=useState("")
+  const [message,setMessage]=useState("")
   const [notetorestaurant,setnotetorestaurant]=useState("")
   let name=JSON.parse(localStorage.getItem("user"))
   
  
 
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
  
   const orderPlaced=(e)=>{
-   e.preventDefault()
+    e.preventDefault()
+    setClick(true)
   fetch("http://localhost:4000/placeorder",{
     method:"Post",
     headers:{
@@ -28,9 +59,28 @@ const Orderplace = () => {
       note:notetorestaurant
     })
   }).then(res => res.json())
-  .then(data => console.log(data))
+  .then(data =>{
+    if(data.message){
+      setMessage(data.message)
+      dispatch({
+        type:"ORDER-PLACED",
+        payload:{
+          shoppingCart,totalPrice,qty,message:message
+        }
+      })
+      setOpen(true)
+      setClick(false)
+
+    setTimeout(()=>{
+
+      history.push("/order")
+    },4000)
+    
+    }
+  })
   .catch(err => console.log(err))
  }
+ console.log(message)
  
   return (
 		<div>
@@ -97,6 +147,9 @@ const Orderplace = () => {
                <button id="placeorderbtn" disabled style={{padding:"10px 0",fontSize:"16px",backgroundColor:"#FE5F1E",color:"#fff"}} class="btn  btn-lg btn-block" >Place Order</button>
              }
             
+            {
+         click ? <div className="text-center mt-5 mb-2"> <CircularProgress /> </div> : <div />
+       }
         
 
             </form>
@@ -143,18 +196,23 @@ const Orderplace = () => {
 			</div>
           </ul>
          
-       
-        
+      
 
         </div>
-        {/* <!--Grid column--/> */}
+    
 
       </div>
-      {/* <!--Grid row--> */}
-
+   
     </div>
   </main>
- 
+  <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} style={{fontSize:"14px"}} severity="success" >
+          {message}
+        </Alert>
+      </Snackbar>
+
+
+        
 		</div>
 	)
 }

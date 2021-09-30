@@ -17,11 +17,13 @@ let UpdatedPrice;
               UpdatedPrice=parseInt(totalPrice )+ parseInt(product.price);
               return {shoppingCart:[product,...shoppingCart],totalPrice:UpdatedPrice,qty:UpdatedQty,open:true}
             }
-
+    case "ORDER-PLACED":
+          
+            return {shoppingCart:[],totalPrice:0,qty:0 , opne:false}
 
     case 'OPEN':
         // product=action.payload.item
-        return{shoppingCart:[...shoppingCart],totalPrice:totalPrice,qty,qty,open:false}
+        return{...state,open:false}
             
     case 'NAV':
         return {...state,open:action.payload}

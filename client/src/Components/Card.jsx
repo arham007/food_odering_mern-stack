@@ -3,6 +3,7 @@ import "./Card.css";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Button } from '@material-ui/core';
 import { CartContext } from '../Global/CartContext';
+// import Skeleton from 'react-loading-skeleton';
 
 
 const Card = () => {
@@ -86,7 +87,7 @@ const Card = () => {
                     <div className="col-md-4">
                 <div key={item._id} className="card-md" style={{height:"500px !important",marginBottom:"20px"}}>
                     <div className="card-image">
-                        <img style={{width:"100%",height:"320px"}}
+                        <img loading="lazy" style={{width:"100%",height:"320px"}}
                             src={item.image} />
                     </div>
 
