@@ -39,12 +39,12 @@ const Navbar = () => {
   <div class="nav-links">
     <a className="border-nav" style={{color:"black",cursor:"pointer"}} onClick={()=> history.push("/")} >Menu</a>
     <a className="border-nav" style={{color:"black",cursor:"pointer"}} >Offers</a>
-    <a className="border-nav" style={{color:"black",cursor:"pointer"}} >My Orders</a>
+    <a className="border-nav" style={{color:"black",cursor:"pointer"}} >MyOrders</a>
     {token && user ? 
     <a className="border-nav" style={{color:"black",cursor:"pointer"}} onClick={()=>{
       localStorage.clear()
       history.push("/")
-    }} >Logout</a>  
+    }}>Logout</a>  
     :
     <a className="border-nav" style={{color:"black",cursor:"pointer"}} onClick={()=> history.push("/login")}  >Login</a>
   }

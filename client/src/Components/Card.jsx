@@ -2,8 +2,9 @@ import React, { useEffect, useState , useContext } from 'react'
 import "./Card.css";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Button } from '@material-ui/core';
+import Skeleton from "./Skeleton"
 import { CartContext } from '../Global/CartContext';
-// import Skeleton from 'react-loading-skeleton';
+
 
 
 const Card = () => {
@@ -70,21 +71,17 @@ const Card = () => {
     // console.log(postsize)
    
     return (
-       
         <div className="container cardsss" style={{marginTop:"50px"}} >
-                {/* {open ?
-               <div  style={{textAlign:"center"}}> <CircularProgress /></div>
-
-            :     */}
-        <div className="row">
-            {response==null ? 
-            <div/>
-            :
-            response.map((item)=>{
-               let string=new String(item.desc)
+            
+           
+            <div className="row">
+               
+        {response.length  > 1 ? 
+             response.map((item)=>{
+                let string=new String(item.desc)
                 return(
                     <>
-                    <div className="col-md-4">
+                <div className="col-md-4">
                 <div key={item._id} className="card-md" style={{height:"500px !important",marginBottom:"20px"}}>
                     <div className="card-image">
                         <img loading="lazy" style={{width:"100%",height:"320px"}}
@@ -120,13 +117,25 @@ const Card = () => {
                     }})}} >Add to cart</a>
                 </div>
             </div>
+            
+          </>
+             )
+        })
+        :
+        [1,2,3,4,5,6,7,8,9].map((item,i)=>{
+            return (
+                <div className="col-lg-4 md-4 sm-12">
+                    <Skeleton />
+                  </div>
+            )
 
+         })
+        }
 
-                    </>
-                )
-            })
-}
-  
+       
+               
+           
+        
 </div>  
 {
     postsize < Limit ? <div />
