@@ -2,6 +2,7 @@ import React from 'react';
 import Router from './router/Route'
 import "./index.css";
 import CartContextProvider from './Global/CartContext';
+import Adminrouter from './router/Adminrouter';
 
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
    <div>
      <CartContextProvider>
      <Router />
+     <Adminrouter />
      </CartContextProvider>
      
    </div>

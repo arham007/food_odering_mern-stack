@@ -21,7 +21,7 @@ const Skeletons = () => {
                             <SkeletonTheme color="#ddd" highlightColor="#f2f2f2">
 
                                 <div>
-                                    <Skeleton height={30} width={300}  style={{marginBottom:"10px"}} />
+                                    <Skeleton height={13} width={300}  style={{marginBottom:"10px"}} />
                                 </div>
                             </SkeletonTheme>
                         </div>
@@ -29,14 +29,14 @@ const Skeletons = () => {
                         <SkeletonTheme color="#ddd" highlightColor="#f2f2f2">
 
                             <div>
-                            <Skeleton height={30} width={300}  style={{marginBottom:"10px"}} />
+                            <Skeleton height={13} width={300}  style={{marginBottom:"10px"}} />
                             </div>
                         </SkeletonTheme>
 
                         <SkeletonTheme color="#ddd" highlightColor="#f2f2f2">
 
                             <div>
-                            <Skeleton height={30} width={200}  style={{marginBottom:"10px"}} />
+                            <Skeleton height={13} width={200}  style={{marginBottom:"10px"}} />
                             </div>
                         </SkeletonTheme>
 
@@ -44,7 +44,7 @@ const Skeletons = () => {
 
                             <div>
                             
-                        <a  style={{ fontSize: "16px", cursor: "pointer" }}><Skeleton height={35} width={300} /></a>
+                        <a  style={{ fontSize: "16px", cursor: "pointer" }}><Skeleton height={23} width={300} /></a>
                             </div>
                         </SkeletonTheme>
                     </div>
