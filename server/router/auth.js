@@ -581,5 +581,10 @@ router.get("/placedorder",requireLogin,(req,res)=>{
     .catch(err => console.log(err))
 })
 
+router.get("/allproduct",(req,res)=>{
+    Products.find()
+    .then(body => res.json({body}))
+    .catch(err => console.log(err))
+})
 
 module.exports=router;

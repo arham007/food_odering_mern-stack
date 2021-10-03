@@ -4,6 +4,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import Addproduct from './Addproduct';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -55,7 +56,7 @@ function Menutabs() {
         </Tabs>
       </Box>
       <TabPanel  value={value} index={0}>
-        <span style={{fontSize:"20px"}}>Item one</span>
+        <Addproduct />
       </TabPanel>
       <TabPanel value={value} index={1}>
         Item Two
