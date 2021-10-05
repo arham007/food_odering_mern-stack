@@ -28,10 +28,7 @@ const OrderSchema=new Schema({
         type:String,
         default:"no value"
     },
-    disable:{
-        type:Boolean,
-        default:"false"
-    },
+  
     paymentType:{
         type:String,
         default:"COD",

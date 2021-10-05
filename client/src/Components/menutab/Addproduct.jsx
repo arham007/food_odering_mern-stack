@@ -2,6 +2,7 @@ import React from 'react'
 
 import Card from "../Card"
 import Admincard from '../Admincard'
+import Editproduct from '../admin/Editproduct'
 
 const Addproduct = () => {
     return (
@@ -11,7 +12,7 @@ const Addproduct = () => {
             
                  <Admincard />
 
-               
+               {/* <Editproduct /> */}
 
             </div>
         </div>

@@ -97,6 +97,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { ListItemAvatar } from '@mui/material';
 import { useHistory, useParams } from 'react-router';
 import Adminmenu from './Adminmenu';
+import Editproduct from './Editproduct';
 const drawerWidth = 200;
 
 function Dashboard() {
@@ -165,6 +166,7 @@ function Dashboard() {
       
          
         </Box>
+     
       </Drawer>
       <Box
         component="main"

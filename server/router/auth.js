@@ -479,6 +479,28 @@ router.post('/newpassword',(req,res)=>{
     })
 })
 
+router.post("/admin/editproduct",(req,res)=>{
+    const { name,
+        price,
+        desc,
+        type,
+        id} = req.body
+    Products.findOne({_id:id})
+    .then(pro =>{
+        if(!pro){
+            res.json({error:"invalid entity"})
+        }
+        pro.name=name,
+        pro.price=price,
+        pro.desc=desc,
+        pro.type=type
+        pro.save().then(data => console.log(data)).catch(err=>console.log(err))
+    })
+    .catch(err => console.log(err))
+    
+    
+})
+
 router.post("/product",(req,res)=>{
   const {name , type , image , price , desc}=req.body
   const products=new Products({
