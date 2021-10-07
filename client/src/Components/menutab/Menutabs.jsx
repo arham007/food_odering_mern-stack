@@ -5,6 +5,7 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Addproduct from './Addproduct';
+import AddNewProduct from './AddNewProduct';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -52,18 +53,16 @@ function Menutabs() {
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab style={{fontSize:"16px",width:"200px"}} label="All Menu" {...a11yProps(0)} />
           <Tab style={{fontSize:"16px",width:"200px"}} label="add new product" {...a11yProps(1)} />
-          <Tab style={{fontSize:"16px",width:"200px"}} label="Item Three" {...a11yProps(2)} />
+     
         </Tabs>
       </Box>
       <TabPanel  value={value} index={0}>
         <Addproduct />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        <AddNewProduct />
       </TabPanel>
-      <TabPanel value={value} index={2}>
-        Item Three
-      </TabPanel>
+     
     </Box>
   );
 }
