@@ -484,7 +484,14 @@ router.post("/admin/editproduct",(req,res)=>{
         price,
         desc,
         type,
-        id} = req.body
+        id,image} = req.body
+        console.log(req.body)
+    
+    if(!name || !price || !desc || !type || !image){
+        return res.status(401).json({error:"please fill all the fields"})
+    }
+
+    
     Products.findOne({_id:id})
     .then(pro =>{
         if(!pro){
@@ -493,8 +500,9 @@ router.post("/admin/editproduct",(req,res)=>{
         pro.name=name,
         pro.price=price,
         pro.desc=desc,
-        pro.type=type
-        pro.save().then(data => console.log(data)).catch(err=>console.log(err))
+        pro.type=type,
+        pro.image=image
+        pro.save().then(data => res.json({message:"edited successfully!!"})).catch(err=>console.log(err))
     })
     .catch(err => console.log(err))
     

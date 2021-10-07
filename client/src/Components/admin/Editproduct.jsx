@@ -5,32 +5,46 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+import { makeStyles } from '@material-ui/core/styles';
+
+import Stack from '@mui/material/Stack';
+
+
 
 import Slide from '@mui/material/Slide';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+    '& > * + *': {
+      marginTop: theme.spacing(2),
+    },
+  },
+}));
+
 
 const Editproduct=({item})=> {
   let [name,setName]=React.useState(item.name)
   let [price,setPrice]=React.useState(item.price)
-
+  let [image,setImage]=React.useState(item.image)
   let [desc,setDesc]=React.useState(item.desc)
   let [category,setCategory]=React.useState(item.type)
   const [open, setOpen] = React.useState(true);
-  
- 
+  const [url,setUrl]=React.useState("")
+  const [check,setCheck]=React.useState(false)
+  const [message,setMessage]=React.useState("")
 
-  const handleChange = () => {
-    if(name==item.name && price==item.price && desc==item.desc && category==item.type){
 
-      alert("nothing is change ")
-      setOpen(false)
-      
-    }
+  React.useEffect(()=>{
     fetch("http://localhost:4000/admin/editproduct",{
       method:"Post",
       headers:{
@@ -41,25 +55,76 @@ const Editproduct=({item})=> {
         price,
         desc,
         type:category,
-        id:item._id
+        id:item._id,
+        image:url
+        
       })
     })
     .then(res => res.json())
-    .then(body => console.log(body))
+    .then(body => {
+      console.log(body)
+      if(body.message){
+        setMessage(body.message)
+        // setOpen(false)
+        setCheck(true)
+       
+      }
+      
+    })
     .catch(err => console.log(err))
     
+
+  },[url])
+  
+  const handleClosed=()=>{
+    setMessage("")
+    setOpen(false)
+  }
+ 
+
+ 
+const handleChange = () => {
+  const data=new FormData()
+  data.append("file",image)
+  data.append("upload_preset","adminedit")
+  data.append("cloud_name","arham333")
+
+  fetch("	https://api.cloudinary.com/v1_1/arham333/image/upload",{
+    method:"Post",
+    body:data
+  })
+  .then(res => res.json())
+  .then(res =>{
    
-  };
+    setUrl(res.url)
+  })
+  .catch(err => console.log(err))
+}
+
+  
+
+
+
+    
+    
+   
+
+
+
+
 
   const handleClose = () => {
     setOpen(false);
   };
 
+ 
+  
+   
+
   return (
     <div>
-      {/* <Button variant="outlined" onClick={handleClickOpen}>
-        Slide in alert dialog
-      </Button> */}
+     
+    
       <Dialog
         open={open}
         TransitionComponent={Transition}
@@ -68,6 +133,8 @@ const Editproduct=({item})=> {
         aria-describedby="alert-dialog-slide-description"
       >
         <DialogTitle style={{fontSize:"20px",fontWeight:"bold"}}>{"You wanted to edit the product?"}</DialogTitle>
+       
+          
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
           <div class="form-group">
@@ -75,6 +142,13 @@ const Editproduct=({item})=> {
             <input type="text" onChange={(e)=> setName(e.target.value)} style={{fontSize:"14px"}} class="form-control" id="recipient-name" defaultValue={item.name} />
           </div>
           </DialogContentText>
+          <div style={{margin:"10px 0"}}>
+          <label  for="recipient-name" class="col-form-label" style={{fontSize:"14px",color:"rgba(0, 0, 0, 0.6)"}}>Product-Name:</label>
+
+        
+          <input style={{fontSize:"12px"}} type="file" onChange={(e)=>   setImage(e.target.files[0])}/>
+        </div>
+
      
           <DialogContentText id="alert-dialog-slide-description">
             <form>
@@ -106,13 +180,36 @@ const Editproduct=({item})=> {
           </div>
 
           </DialogContentText>
-        
+        {
+          message ?
+          <DialogContentText>
+          <Snackbar open={open} autoHideDuration={2000} onClose={handleClosed} >
+        <Alert style={{fontSize:"14px"}} severity="success" onClose={handleClosed}>
+          {message}
+        </Alert>
+      </Snackbar>
+      </DialogContentText>
+
+:
+<div />
+        }
+         
         </DialogContent>
-        <DialogActions>
+          <DialogActions>
           <Button style={{fontSize:"12px"}} variant="contained" color="secondary" onClick={handleClose}>Close</Button>
           <Button style={{fontSize:"12px"}} variant="contained" onClick={handleChange}>Submit</Button>
         </DialogActions>
+
+ 
+
+   
+    
       </Dialog>
+   
+     
+     
+  
+
     </div>
   )
 }
