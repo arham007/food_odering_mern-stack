@@ -14,7 +14,8 @@ const ProductSchema=new Schema({
        required:true
    },
    desc:{
-       type:String
+       type:String,
+       
    },
    disable:{
     type:String,

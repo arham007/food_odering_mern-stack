@@ -509,6 +509,22 @@ router.post("/admin/editproduct",(req,res)=>{
     
 })
 
+router.post("/admin/addproducts",(req,res)=>{
+    // console.log(req.body)
+    const {name , type , image , desc , price , disable}=req.body
+    const data=new Products({
+        name,
+        image,
+        type,
+        desc,
+        disable,
+        price
+    })
+    console.log(data)
+    data.save().then(data => res.json({data}))
+    .catch(err => console.log(err))
+})
+
 router.post("/product",(req,res)=>{
   const {name , type , image , price , desc}=req.body
   const products=new Products({
@@ -539,7 +555,7 @@ let limit=req.body.variables.limit
     
 })
 router.get("/fastfood",(req,res)=>{
-    const data= Products.find({'type':'fastfood'})
+    const data= Products.find({'type':'fastfood'}).sort({'createdAt':-1})
      .then(data =>{
          res.json({data})
      } )
@@ -547,7 +563,7 @@ router.get("/fastfood",(req,res)=>{
      
  })
  router.get("/pizza",(req,res)=>{
-    const data= Products.find({'type':'pizza'})
+    const data= Products.find({'type':'pizza'}).sort({'createdAt':-1})
      .then(data =>{
          res.json({data})
      } )
@@ -556,7 +572,7 @@ router.get("/fastfood",(req,res)=>{
  })
  
  router.get("/extra",(req,res)=>{
-    const data= Products.find({'type':'extra'})
+    const data= Products.find({'type':'extra'}).sort({'createdAt':-1})
      .then(data =>{
          res.json({data})
      } )
@@ -564,7 +580,7 @@ router.get("/fastfood",(req,res)=>{
      
  })
  router.get("/beverage",(req,res)=>{
-    const data= Products.find({'type':'beverage'})
+    const data= Products.find({'type':'beverage'}).sort({'createdAt':-1})
      .then(data =>{
          res.json({data})
      } )
@@ -572,7 +588,7 @@ router.get("/fastfood",(req,res)=>{
      
  })
  router.get("/bbq",(req,res)=>{
-    const data= Products.find({'type':'BBQ'})
+    const data= Products.find({'type':'BBQ'}).sort({'createdAt':-1})
      .then(data =>{
          res.json({data})
      } )
