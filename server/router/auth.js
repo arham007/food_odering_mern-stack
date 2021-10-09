@@ -633,4 +633,24 @@ router.get("/allproduct",(req,res)=>{
     .catch(err => console.log(err))
 })
 
+router.delete("/admin/delete/:id",(req,res)=>{
+    
+    Products.findOne({_id:req.params.id})
+    .exec((err,post) =>{
+       
+        // if(!post){
+        //     return res.json({error:"invalid entity"})  
+        // }
+        if(post){
+
+            post.remove()
+            .then(result =>{
+              
+                res.status(200).json({result})
+            })
+        }
+        
+    })
+})
+
 module.exports=router;

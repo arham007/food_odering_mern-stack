@@ -13,6 +13,7 @@ const Adminrouter = () => {
                 <Route exact path="/admin/menu" component={Adminmenu} />
                 <Route exact path="/admin/addproduct" component={Addproduct} />
                 <Route exact path="/admin/editproduct" component={Editproduct} />
+                
             </Router>
             
         </div>

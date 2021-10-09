@@ -2,10 +2,14 @@ import React, { useState , useEffect } from 'react'
 import "./toggle.css"
 import Category from  "./Category"
 import Editproduct from "./admin/Editproduct"
-const Admincard = () => {
+import Deleteproduct from './Deleteproduct'
+const Admincard = ({iddelete}) => {
+    console.log(iddelete)
     const [state,setstate]=useState(false)
     const[item,setItem]=useState({})
-    
+    const [arham,setArham]=useState(false)
+    const [id,setId]=useState("")
+    // console.log(id)
     let [data,setData]=useState([])
     useEffect(()=>{
       
@@ -34,8 +38,7 @@ const Admincard = () => {
     }
     // console.log(data)
     
-  
-    
+
  
     return (
         <div className="container">
@@ -59,10 +62,7 @@ const Admincard = () => {
                         <span style={{fontSize:"14px",height:"20px"}}>{item.name}</span>
                     </div>
                    
-                        {/* <div className="card-text"   >
-                        
-                            
-                        </div> */}
+                   
                     
                     <div className="card-text" style={{fontSize:"18px",fontWeight:"bolder"}}>
                         Rs {`${item.price}`}
@@ -83,7 +83,10 @@ const Admincard = () => {
                         setstate(!state)
                         setItem(item)
                     }}   className="card-button" style={{fontSize:"16px",cursor:"pointer",borderRadius:"0"} } >Edit</a>
-                    <a  className="card-button" style={{fontSize:"16px",cursor:"pointer",borderRadius:"0"} } >Delete</a>
+                    <a  onClick={()=>{
+                        setArham(true)
+                        setId(item._id)
+                    } }   className="card-button" style={{fontSize:"16px",cursor:"pointer",borderRadius:"0"} } >Delete</a>
                  
                     </div>
                 </div>
@@ -104,9 +107,14 @@ const Admincard = () => {
                 :
                  <div />
             }
-              
-            </div>
+   
+   {
+                arham ? <Deleteproduct id={id} /> : <div />
+            }
 
+
+            </div>
+            
             
         </div>
     )

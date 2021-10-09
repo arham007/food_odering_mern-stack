@@ -15,6 +15,7 @@ const ProductSchema=new Schema({
    },
    desc:{
        type:String,
+       default:"no value"
        
    },
    disable:{
