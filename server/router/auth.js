@@ -653,4 +653,16 @@ router.delete("/admin/delete/:id",(req,res)=>{
     })
 })
 
+
+
+router.get("/admin/currentorders",(req,res)=>{
+    Order.find({'status':'order_placed'}).sort({'createdAt':"-1"}).populate("user")
+    .then(data =>{
+        
+        res.json({data})
+    } )
+    .catch(err => console.log(err))
+})
+
+
 module.exports=router;

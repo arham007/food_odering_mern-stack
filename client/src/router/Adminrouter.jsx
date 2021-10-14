@@ -4,6 +4,7 @@ import Adminmenu from '../Components/admin/Adminmenu';
 import Dashboard from '../Components/admin/Dashboard'
 
 import Editproduct from '../Components/admin/Editproduct';
+import AdminOrders from '../Components/adminorders/AdminOrders';
 import Addproduct from '../Components/menutab/Addproduct';
 
 const Adminrouter = () => {
@@ -14,6 +15,7 @@ const Adminrouter = () => {
                 <Route exact path="/admin/menu" component={Adminmenu} />
                 <Route exact path="/admin/addproduct" component={Addproduct} />
                 <Route exact path="/admin/editproduct" component={Editproduct} />
+                <Route exact path="/admin/orders" component={AdminOrders} />
                
                 
             </Router>
