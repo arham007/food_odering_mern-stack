@@ -18,12 +18,11 @@ import ReorderIcon from '@mui/icons-material/Reorder';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { ListItemAvatar } from '@mui/material';
 import { useHistory, useParams } from 'react-router';
-import Adminmenu from './Adminmenu';
-import Editproduct from './Editproduct';
+import Adminmainpage from "./Adminmainpage"
 const drawerWidth = 200;
 
 function Dashboard() {
-    let [menu , setMenu]=React.useState(false)
+
     
    const history=useHistory()
    
@@ -50,14 +49,14 @@ function Dashboard() {
             <Divider>
                 <ListItem button style={{marginLeft:"-20px"}}>
                    <span ><DashboardIcon style={{fontSize:"20px",color:"#FE5F1E",margin:"0 15px"}}  /></span>
-                <ListItemText ><span style={{fontSize:"18px",fontWeight:"500"}}>Dashboard</span></ListItemText>
+                <ListItemText onClick={()=> history.push("/admin/dashboard")} ><span style={{fontSize:"18px",fontWeight:"500"}} >Dashboard</span></ListItemText>
                 </ListItem>
             </Divider>
             <hr />
             <Divider>
                 <ListItem button style={{marginLeft:"-20px"}}>
                    <span ><ReorderIcon style={{fontSize:"22px",color:"#FE5F1E"}}  /></span>
-                <ListItemText style={{margin:"0 20px"}}><span style={{fontSize:"18px",fontWeight:"500"}}>Orders</span></ListItemText>
+                <ListItemText onClick={()=> history.push("/admin/orders")} style={{margin:"0 20px"}}><span style={{fontSize:"18px",fontWeight:"500"}}>Orders</span></ListItemText>
                 </ListItem>
             </Divider>
             <hr />
@@ -66,7 +65,7 @@ function Dashboard() {
                 <ListItem button style={{marginLeft:"-20px"}}>
                 
                    <span ><RestaurantIcon style={{fontSize:"20px",color:"#FE5F1E"}}  /></span>
-                <ListItemText style={{margin:"0 20px"}}><span style={{fontSize:"18px",fontWeight:"500"}} onClick={()=>setMenu(true)}>Menu</span>
+                <ListItemText onClick={()=> history.push("/admin/menu")} style={{margin:"0 20px"}}><span style={{fontSize:"18px",fontWeight:"500"}} >Menu</span>
      
            
        
@@ -95,11 +94,7 @@ function Dashboard() {
         sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
       >
         <Toolbar />
-        {menu ? 
-        history.push("/admin/menu")
-        :
-        <div />    
-    }
+        <Adminmainpage />
     
       </Box>
     </Box>
