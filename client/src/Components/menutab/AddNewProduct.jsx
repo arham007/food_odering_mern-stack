@@ -40,6 +40,7 @@ const AddNewProduct = () => {
                 setImage("")
                 setDesc("")
                 setSucc(true)
+                window.location.reload()
 
                 setTimeout(()=>{
                     setSucc(false)
