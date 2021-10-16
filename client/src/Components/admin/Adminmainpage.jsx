@@ -45,7 +45,7 @@ const Adminmainpage = () => {
        <br />
        <br />
 
-        <div className="container">
+        <div className="container" style={{border:"2px solid #fff",boxShadow:"2px 2px 15px rgba(0,0,0,0.5)"}}>
             <div style={{width:"100%",borderRadius:"10px"}}>
             <div style={{textAlign:"end"}}>
                 <div style={{fontSize:"20px",marginRight:"20px"}}>Recently Placed Order</div>
@@ -96,10 +96,15 @@ const Adminmainpage = () => {
             </div>
         </div>
 <br />
-<div style={{width:"100%",height:'500px',display:"grid"}}>
-<h2>Favourite Items</h2>
-<hr />
-<FavouriteItem />
+<div style={{border:"2px solid #fff",boxShadow:"2px 2px 15px rgba(0,0,0,0.5)"}}>
+  <div style={{textAlign:"end"}}>
+  <div style={{fontSize:"20px",marginRight:"20px"}}>Favourite Items</div>
+    <hr />
+  </div >
+  <div >
+
+<FavouriteItem  />
+  </div>
 </div>
         </>
     )

@@ -1,68 +1,250 @@
-import React from 'react'
+import React from 'react';
 import "./favourite.css"
-
+import ChevronLeftRoundedIcon from '@mui/icons-material/ChevronLeftRounded';
+import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
 
 const FavouriteItem = () => {
-      return(
+  
+  return (
+    <div>
+      <div class="container my-4">
 
-      <>
-      <div class="card">
-  <input type="radio" name="select" id="slide_1" checked />
-  <input type="radio" name="select" id="slide_2" />
-  <input type="radio" name="select" id="slide_3" />
-  <input type="checkbox" id="slideImg" />
-  <input type="checkbox" id="slideImg" />
 
-  <div class="slider">
-    <label for="slide_1" class="slide slide_1"></label>
-    <label for="slide_2" class="slide slide_2"></label>
-    <label for="slide_3" class="slide slide_3"></label>
- 
-  </div>
 
-  <div class="inner_part">
-    <label for="slideImg" class="img">
-      <img class="img_1" src="https://c4.wallpaperflare.com/wallpaper/978/131/617/kiz-kulesi-turkey-istanbul-maiden-s-tower-wallpaper-preview.jpg" />
-    </label>
-    <div class="content content_1">
-      <div class="title">İstanbul</div>
-      <div class="text">
-        Istanbul, a fascinating city built on two Continents, divided by the Bosphorus Strait. This is one of the greatest cities in the world.
-      </div>
-      <button>Read More</button>
-    </div>
-  </div>
 
-  <div class="inner_part">
-    <label for="slideImg" class="img">
-      <img class="img_2" src="https://c4.wallpaperflare.com/wallpaper/649/96/56/ankara-cityscape-night-night-sky-wallpaper-preview.jpg" />
-    </label>
-    <div class="content content_2">
-      <div class="title">Ankara</div>
-      <div class="text">
-        Ankara is Turkey's beating heart, second largest city, located in the Central Anatolia region and home to the Grand National Assembly of Turkey.
-      </div>
-      <button>Read More</button>
-    </div>
-  </div>
+        {/* <!--Carousel Wrapper--> */}
+        <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
 
-  <div class="inner_part">
-    <label for="slideImg" class="img">
-      <img class="img_3" src="https://c4.wallpaperflare.com/wallpaper/620/34/558/turkey-izmir-mountains-wallpaper-preview.jpg" />
-    </label>
-    <div class="content content_3">
-      <div class="title">İzmir</div>
-      <div class="text">Located on the shores of the Aegean Sea, west of the Anatolian Peninsula, İzmir is the third-largest city in Turkey.
-      </div>
-      <button>Read More</button>
+          {/* <!--Controls--> */}
+          <div class="controls-top" style={{ textAlign: "center", margin: "10px 0px" }}>
+            <a class="btn-floating" href="#multi-item-example" data-slide="prev"><ChevronLeftRoundedIcon style={{ fontSize: "50px" }} /></a>
+            <a class="btn-floating" href="#multi-item-example" data-slide="next"><ChevronRightRoundedIcon style={{ fontSize: "50px" }} /></a>
+          </div>
+          {/* <!--/.Controls--> */}
+
+          {/* <!--Indicators--> */}
+          <ol class="carousel-indicators">
+            <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
+            <li data-target="#multi-item-example" data-slide-to="1"></li>
+
+          </ol>
+          {/* <!--/.Indicators--> */}
+
+          {/* <!--Slides--> */}
+          <div class="carousel-inner" role="listbox">
+
+            {/* <!--First slide--> */}
+            <div class="carousel-item active">
+
+              <div class="col-md-4" style={{ float: "left" }}>
+                <div class="card mb-2">
+                  <img class="card-img-top"
+                    src="https://burgerlab.com.pk/wp-content/uploads/2020/12/Dopper_FrontPage.png?c062ef&c062ef" alt="Card image cap" />
+                  <div class="card-body">
+                    <h4 class="card-title">Bumper Menu - Doppler</h4>
+                    <p class="card-text">
+                      <span style={{fontSize:"20px"}} class="fa fa-star checked"></span>
+                      <span style={{fontSize:"20px"}} class="fa fa-star checked"></span>
+                      <span style={{fontSize:"20px"}} class="fa fa-star checked"></span>
+                      <span style={{fontSize:"20px"}} class="fa fa-star checked" ></span>
+                      <span style={{fontSize:"20px"}} class="fa fa-star checked"></span>
+                      <span className="p-3">(150 Reviews)</span>
+                    </p>
+                    <a ><span style={{fontSize:"14px",textAlign:"center",backgroundColor:"#e3defe",borderColor:"#e3defe",color:"#634fd2",padding:"10px",borderRadius:"5px"}} class="fa fa-heart me-10"> 12k Like it</span></a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4" style={{ float: "left" }}>
+                <div class="card mb-2">
+                <img class="card-img-top"
+                    src="https://em-cdn.eatmubarak.pk/55018/dish_image/1630565918.jpg" alt="Card image cap" />
+                  <div class="card-body">
+                    <h4 class="card-title">Nuker Chicken + All American</h4>
+                    <p class="card-text">
+                      <span style={{fontSize:"20px"}} class="fa fa-star checked"></span>
+                      <span style={{fontSize:"20px"}} class="fa fa-star checked"></span>
+                      <span style={{fontSize:"20px"}} class="fa fa-star checked"></span>
+                      <span style={{fontSize:"20px"}} class="fa fa-star checked" ></span>
+                      <span style={{fontSize:"20px"}} class="fa fa-star checked"></span>
+                      <span className="p-3">(150 Reviews)</span>
+                    </p>
+                    <a ><span style={{fontSize:"14px",textAlign:"center",backgroundColor:"#e3defe",borderColor:"#e3defe",color:"#634fd2",padding:"10px",borderRadius:"5px"}} class="fa fa-heart me-10"> 12k Like it</span></a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4" style={{ float: "left" }}>
+                <div class="card mb-2">
+                <img class="card-img-top"
+                    src="https://menuprices.pk/wp-content/uploads/2021/02/Burger-Lab-Faisalabad-Specialty.png" alt="Card image cap" />
+                  <div class="card-body">
+                    <h4 class="card-title"> Bumper Menu - All American Double Cheese</h4>
+                    <p class="card-text">
+                      <span style={{fontSize:"20px"}} class="fa fa-star checked"></span>
+                      <span style={{fontSize:"20px"}} class="fa fa-star checked"></span>
+                      <span style={{fontSize:"20px"}} class="fa fa-star checked"></span>
+                      <span style={{fontSize:"20px"}} class="fa fa-star checked" ></span>
+                      <span style={{fontSize:"20px"}} class="fa fa-star checked"></span>
+                      <span className="p-3">(150 Reviews)</span>
+                    </p>
+                    <a ><span style={{fontSize:"14px",textAlign:"center",backgroundColor:"#e3defe",borderColor:"#e3defe",color:"#634fd2",padding:"10px",borderRadius:"5px"}} class="fa fa-heart me-10"> 12k Like it</span></a>
+                  </div>
+                </div>
+              </div>
+
+
+
+            </div>
+            {/* <!--/.First slide--> */}
+
+            {/* <!--Second slide--> */}
+            <div class="carousel-item">
+
+              <div class="col-md-4" style={{ float: "left" }}>
+                <div class="card mb-2">
+                  <img class="card-img-top"
+                    src="https://bbqtonight.com/wp-content/uploads/2016/05/38-1367395450-300x300.jpg" alt="Card image cap" />
+                  <div class="card-body">
+                    <h4 class="card-title">BBQ Special Platter</h4>
+                    <p class="card-text">
+                      <span style={{fontSize:"20px"}} class="fa fa-star checked"></span>
+                      <span style={{fontSize:"20px"}} class="fa fa-star checked"></span>
+                      <span style={{fontSize:"20px"}} class="fa fa-star checked"></span>
+                      <span style={{fontSize:"20px"}} class="fa fa-star checked" ></span>
+                      <span style={{fontSize:"20px"}} class="fa fa-star checked"></span>
+                      <span className="p-3">(150 Reviews)</span>
+                    </p>
+                    <a ><span style={{fontSize:"14px",textAlign:"center",backgroundColor:"#e3defe",borderColor:"#e3defe",color:"#634fd2",padding:"10px",borderRadius:"5px"}} class="fa fa-heart me-10"> 12k Like it</span></a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4" style={{ float: "left" }}>
+                <div class="card mb-2">
+                  <img class="card-img-top"
+                    src="https://bbqtonight.com/wp-content/uploads/2016/05/95-1366284968-300x300.jpg" alt="Card image cap" />
+                  <div class="card-body">
+                  <h4 class="card-title">Chargah Full</h4>
+                    <p class="card-text">
+                      <span style={{fontSize:"20px"}} class="fa fa-star checked"></span>
+                      <span style={{fontSize:"20px"}} class="fa fa-star checked"></span>
+                      <span style={{fontSize:"20px"}} class="fa fa-star checked"></span>
+                      <span style={{fontSize:"20px"}} class="fa fa-star checked" ></span>
+                      <span style={{fontSize:"20px"}} class="fa fa-star checked"></span>
+                      <span className="p-3">(150 Reviews)</span>
+                    </p>
+                    <a ><span style={{fontSize:"14px",textAlign:"center",backgroundColor:"#e3defe",borderColor:"#e3defe",color:"#634fd2",padding:"10px",borderRadius:"5px"}} class="fa fa-heart me-10"> 12k Like it</span></a>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="col-md-4" style={{ float: "left" }}>
+                <div class="card mb-2">
+                  <img class="card-img-top"
+                    src="https://bbqtonight.com/wp-content/uploads/2016/05/0-1365448698-300x300.jpg" alt="Card image cap" />
+                  <div class="card-body">
+                  <h4 class="card-title">BBQ Mutton Ribs</h4>
+                    <p class="card-text">
+                      <span style={{fontSize:"20px"}} class="fa fa-star checked"></span>
+                      <span style={{fontSize:"20px"}} class="fa fa-star checked"></span>
+                      <span style={{fontSize:"20px"}} class="fa fa-star checked"></span>
+                      <span style={{fontSize:"20px"}} class="fa fa-star checked" ></span>
+                      <span style={{fontSize:"20px"}} class="fa fa-star checked"></span>
+                      <span className="p-3">(150 Reviews)</span>
+                    </p>
+                    <a ><span style={{fontSize:"14px",textAlign:"center",backgroundColor:"#e3defe",borderColor:"#e3defe",color:"#634fd2",padding:"10px",borderRadius:"5px"}} class="fa fa-heart me-10"> 12k Like it</span></a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            {/* <!--/.Second slide--> */}
+
+          {/* third Slide */}
+          <div class="carousel-item">
+
+<div class="col-md-4" style={{ float: "left" }}>
+  <div class="card mb-2">
+    <img class="card-img-top"
+      src="https://dominos.com.pk/ProductImages/df42b37d75ec4a5bb27cc2e99d2ac163.jpg" alt="Card image cap" />
+    <div class="card-body">
+    <br />
+      <br />
+      <br />
+      <h4 class="card-title">Pakistani Hot</h4>
+      <p class="card-text">
+        <span style={{fontSize:"20px"}} class="fa fa-star checked"></span>
+        <span style={{fontSize:"20px"}} class="fa fa-star checked"></span>
+        <span style={{fontSize:"20px"}} class="fa fa-star checked"></span>
+        <span style={{fontSize:"20px"}} class="fa fa-star checked" ></span>
+        <span style={{fontSize:"20px"}} class="fa fa-star checked"></span>
+        <span className="p-3">(150 Reviews)</span>
+      </p>
+      <a ><span style={{fontSize:"14px",textAlign:"center",backgroundColor:"#e3defe",borderColor:"#e3defe",color:"#634fd2",padding:"10px",borderRadius:"5px"}} class="fa fa-heart me-10"> 12k Like it</span></a>
     </div>
   </div>
 </div>
-        </>
-        
-  
-        
-    )
+
+<div class="col-md-4" style={{ float: "left" }}>
+  <div class="card mb-2">
+    <img class="card-img-top"
+      src="https://dominos.com.pk/ProductImages/7758775c0cda4433904d1ed8ed608b71.jpg" alt="Card image cap" />
+    <div class="card-body">
+    <br />
+      <br />
+      <br />
+    <h4 class="card-title">Legend - BBQ</h4>
+      <p class="card-text">
+        <span style={{fontSize:"20px"}} class="fa fa-star checked"></span>
+        <span style={{fontSize:"20px"}} class="fa fa-star checked"></span>
+        <span style={{fontSize:"20px"}} class="fa fa-star checked"></span>
+        <span style={{fontSize:"20px"}} class="fa fa-star checked" ></span>
+        <span style={{fontSize:"20px"}} class="fa fa-star checked"></span>
+        <span className="p-3">(150 Reviews)</span>
+      </p>
+      <a ><span style={{fontSize:"14px",textAlign:"center",backgroundColor:"#e3defe",borderColor:"#e3defe",color:"#634fd2",padding:"10px",borderRadius:"5px"}} class="fa fa-heart me-10"> 12k Like it</span></a>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="col-md-4" style={{ float: "left" }}>
+  <div class="card mb-2">
+    <img class="card-img-top"
+      src="https://dominos.com.pk/ProductImages/7c00101c8ffb4f0c86e9a1aeb7eb9aca.jpg" alt="Card image cap" />
+    <div class="card-body">
+      <br />
+      <br />
+      <br />
+    <h4 class="card-title">Extravaganza</h4>
+      <p class="card-text">
+        <span style={{fontSize:"20px"}} class="fa fa-star checked"></span>
+        <span style={{fontSize:"20px"}} class="fa fa-star checked"></span>
+        <span style={{fontSize:"20px"}} class="fa fa-star checked"></span>
+        <span style={{fontSize:"20px"}} class="fa fa-star checked" ></span>
+        <span style={{fontSize:"20px"}} class="fa fa-star checked"></span>
+        <span className="p-3">(150 Reviews)</span>
+      </p>
+      <a ><span style={{fontSize:"14px",textAlign:"center",backgroundColor:"#e3defe",borderColor:"#e3defe",color:"#634fd2",padding:"10px",borderRadius:"5px"}} class="fa fa-heart me-10"> 12k Like it</span></a>
+    </div>
+  </div>
+</div>
+
+</div>
+
+          </div>
+          {/* <!--/.Slides--> */}
+
+        </div>
+        {/* <!--/.Carousel Wrapper--> */}
+      </div>
+    </div>
+  )
 }
 
 export default FavouriteItem
+

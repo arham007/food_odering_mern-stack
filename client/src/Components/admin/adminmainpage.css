@@ -1,6 +1,7 @@
 body{
     margin-top:20px;
-    background:#FAFAFA;
+    background-color: transparent;
+    /* color: f3f2f7; */
 }
 .order-card {
     color: #fff;
