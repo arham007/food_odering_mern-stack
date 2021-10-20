@@ -653,7 +653,11 @@ router.delete("/admin/delete/:id",(req,res)=>{
     })
 })
 
-
+router.post("/singleorderdetails",(req,res)=>{
+    Order.findOne({_id:req.body.id})
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+})
 
 router.get("/admin/currentorders",(req,res)=>{
     Order.find({'staus':'order_placed'}).sort({'createdAt':"-1"}).populate("user")

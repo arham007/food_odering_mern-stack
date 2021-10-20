@@ -16,6 +16,7 @@ import Privateroute from './Privateroute';
 
 import Checkout from '../Components/Checkout';
 import Orderplace from '../Components/Orderplace';
+import Singleorder from '../Components/Singleorder';
 import Order from '../Components/Order';
 
 
@@ -39,6 +40,7 @@ const Router = () => {
                 <Privateroute exact path="/ordercart" component={Checkout} />
                 <Route exact path="/beverage" component={Beverage} />
                 <Route exact path="/reset/:token" component={Newpassword} />
+                <Route exact path="/customer/order/:id" component={Singleorder} />
                 <Privateroute exact path="/checkout" component={Orderplace} />
                 <Privateroute exact path="/order" component={Order} />
        

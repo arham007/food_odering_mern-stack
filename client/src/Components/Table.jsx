@@ -47,7 +47,7 @@ function Summary() {
       orders.map((item,i)=>{
         return(
           <tr key={i}>
-          <th style={{fontSize:"16px"}}    scope="row"><Link>{item._id}</Link></th>
+          <th style={{fontSize:"16px"}}    scope="row"><Link to={`/customer/order/${item._id}`}>{item._id}</Link></th>
           <td style={{fontSize:"16px"}}   >{item.address}</td>
           <td style={{fontSize:"16px"}}   >{moment(item.createdAt).calendar()}</td>
           
