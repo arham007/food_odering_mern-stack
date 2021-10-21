@@ -18,6 +18,7 @@ const Currentorders = () => {
     const handleChange = (event) => {
         setAge(event.target.value);
     };
+    console.log(age)
 
 
     console.log(data)

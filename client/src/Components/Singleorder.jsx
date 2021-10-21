@@ -27,7 +27,7 @@ const Singleorder = () => {
                            <h6 style={{color:"green",}} class="bg-white py-1 rounded-full px-4 ">64646464341346446464</h6>
                        </div>
                        <ul>
-                           <li style={{fontSize:"18px",paddingBottom:"60px"}} class="status-line "><span>Order-placed</span></li>
+                           <li style={{fontSize:"18px",paddingBottom:"60px"}} class="status-line step-completed "><span>Order-placed</span></li>
                            <li style={{fontSize:"18px",paddingBottom:"60px"}} class="status-line current"><span>Order-confirmation</span></li>
                            <li style={{fontSize:"18px",paddingBottom:"60px"}} class="status-line "><span>Preparation</span></li>
                            <li style={{fontSize:"18px",paddingBottom:"60px"}} class="status-line "><span>Out for delivery</span></li>

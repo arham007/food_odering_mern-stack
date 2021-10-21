@@ -68,6 +68,9 @@ li{
     background: black;
     margin-top: 22px;
 }
+.status-box ul li:after{
+    background: darkgray;
+}
 /* .status-box ul li:nth-child(5) span:after {
     box-shadow: 0 20px 1px 20px sandybrown;
 } */
@@ -75,10 +78,10 @@ li{
     background: gray;
 } */
 .status-box ul li.step-completed:after{
-    background: gray ;
+    background: darkgray ;
 }
 .status-box ul li.step-completed span{
-    color: gray;
+    color: darkgray;
     
 
 }

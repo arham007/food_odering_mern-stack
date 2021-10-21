@@ -660,7 +660,7 @@ router.post("/singleorderdetails",(req,res)=>{
 })
 
 router.get("/admin/currentorders",(req,res)=>{
-    Order.find({'staus':'order_placed'}).sort({'createdAt':"-1"}).populate("user")
+    Order.find().sort({'createdAt':"-1"}).populate("user")
     .then(data =>{
         
         res.json({data})
@@ -675,5 +675,17 @@ router.get("/admin/completedorders",(req,res)=>{
     } )
     .catch(err => console.log(err))
 })
+
+router.post("/order/statuschange",(req,res)=>{
+    const {id , value}=req.body
+    Order.findOne({_id : id})
+    .then((body) =>{
+        body.staus=value.toString();
+        body.save().then(res => console.log("status change successfully",res)).catch(err => console.log(err))
+    } )
+    .catch(err => console.log(err))
+    // console.log(req.body)
+})
+
 
 module.exports=router;

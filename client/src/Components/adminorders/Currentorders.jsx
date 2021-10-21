@@ -7,20 +7,35 @@ import Select from '@mui/material/Select';
 
 
 const Currentorders = () => {
+    const [age, setAge] =useState('');
+    const [id,setId]=useState("")
+    const [data,setData]=useState("")
     useEffect(()=>{
         fetch("http://localhost:4000/admin/currentorders")
         .then(res=>res.json())
         .then(body => setData(body.data))
         .catch(err => console.log(err))
     },[])
-    const [age, setAge] = React.useState('');
-    const [data,setData]=useState("")
-    const handleChange = (event) => {
-        setAge(event.target.value);
-    };
-
-
+ 
     console.log(data)
+ useEffect(()=>{
+    fetch("http://localhost:4000/order/statuschange",{
+        method:"Post",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+           id:id,
+            value:age
+
+        })
+    })
+    .then(res => res.json())
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+ },[age])
+
+    
     return (
         <div>
             <div class="container">
@@ -72,11 +87,15 @@ const Currentorders = () => {
                                                     
                                                     id="demo-simple-select-standard"
                                                     value={item.staus}
-                                                    onChange={handleChange}
+                                                    onChange={(e) =>{
+                                                        setAge(e.target.value)
+                                                        setId(item._id)
+                                                    }}
                                                    size="large"
                                                    style={{fontSize:"15px",marginBottom:"30px",width:"100%"}}
                                                 >
                                                    
+                                                    
                                                     <MenuItem  value="order_placed">order_placed</MenuItem>
                                                     <MenuItem  value="preparing">preparing</MenuItem>
                                                     <MenuItem  value="pickup">pickup</MenuItem>

@@ -13,7 +13,7 @@ const OrderSchema=new Schema({
     },
     staus:{
         type:String,
-        default:"order_placed",
+        default:"order_placed"
      
     },
     address:{
