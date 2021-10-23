@@ -655,7 +655,7 @@ router.delete("/admin/delete/:id",(req,res)=>{
 
 router.post("/singleorderdetails",(req,res)=>{
     Order.findOne({_id:req.body.id})
-    .then(res => console.log(res))
+    .then(body => res.status(200).json({body}) )
     .catch(err => console.log(err))
 })
 

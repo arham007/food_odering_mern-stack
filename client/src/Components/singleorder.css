@@ -4,7 +4,7 @@ section.status{
 }
 .status-box{
     padding: 30px 90px;
-    background-color:#fefefe;
+    background-color:#F8F8F8;
     /* padding: 60px 0 0; */
 }
 .status-box ul li span{
@@ -18,7 +18,7 @@ li{
     position: absolute;
     left: -20px;
     top: 60%;
-    background: black;
+    background: #232323;
     width: 10px;
     height: 10px;
     border-radius: 50%;
@@ -65,32 +65,64 @@ li{
     left: -16px;
     width: 2px;
     height: 75%;
-    background: black;
+    background:#232323;
     margin-top: 22px;
 }
 .status-box ul li:after{
-    background: darkgray;
+    background: #ccc;
+
 }
-/* .status-box ul li:nth-child(5) span:after {
-    box-shadow: 0 20px 1px 20px sandybrown;
-} */
+.status-box ul li.step-completed::before{
+    background: #ccc;
+}
+.status-box ul li:after{
+    background: #ccc;
+    color: #ccc;
+}
+.status-box ul li:nth-child(5) span:after {
+    box-shadow: 0 30px 1px 20px #fefefe;
+}
 /* .status-box ul li.step-completed:before{
     background: gray;
 } */
+
+.status-box ul li.step-completed ::after {
+    background: #ccc;
+    color: #ccc;
+}
 .status-box ul li.step-completed:after{
-    background: darkgray ;
+    background: #ccc ;
 }
 .status-box ul li.step-completed span{
-    color: darkgray;
+    color: #ccc;
     
 
 }
+
+.status-box ul li.step-completed span:after{
+    background: #ccc;
+    color: #ccc;
+}
 .status-box ul li.current span{
-    color:blue
+    color:#FE5F1E
 }
 .status-box ul li.current span::after{
-    background:blue;
+    background:#FE5F1E;
 }
 .status-box ul li.current span::after{
-    background: blue;
+    background: #FE5F1E;
+}
+
+
+.status-box ul li.remove span{
+    color:#232323
+}
+.status-box ul li.remove span::after{
+    background:#232323;
+}
+.status-box ul li.remove span::after{
+    background: #232323;
+}
+.status-box ul li.remove::before{
+    background: #232323;
 }

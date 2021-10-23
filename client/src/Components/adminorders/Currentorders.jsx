@@ -96,10 +96,11 @@ const Currentorders = () => {
                                                 >
                                                    
                                                     
-                                                    <MenuItem  value="order_placed">order_placed</MenuItem>
-                                                    <MenuItem  value="preparing">preparing</MenuItem>
-                                                    <MenuItem  value="pickup">pickup</MenuItem>
-                                                    <MenuItem  value="completed">completed</MenuItem>
+                                                    <MenuItem  value="Order-placed">Order_placed</MenuItem>
+                                                    <MenuItem  value="Order-confirmation">Order-confirmation</MenuItem>
+                                                    <MenuItem  value="Preparing">Preparing</MenuItem>
+                                                    <MenuItem  value="Out for delivery">Out for delivery</MenuItem>
+                                                    <MenuItem  value="Completed">Completed</MenuItem>
                                                 </Select>
                                             </FormControl>
                                         </td>
