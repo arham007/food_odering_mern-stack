@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import "./singleorder.css"
 
+
 const Singleorder = () => {
+   
     let [order,setOrder]=useState({});
     let [stepCompleted,setStepCompleted]=useState(true)
     let params=useParams()
-    const arr=[];
+   
     
-//   console.log(params.id)
+    
     useEffect(()=>{
         fetch("http://localhost:4000/singleorderdetails",{
             method:"Post",
@@ -24,8 +26,9 @@ const Singleorder = () => {
     },[])
     useEffect(()=>{
         const statuses=document.querySelectorAll(".status-line");
+        console.log(order.staus)
         for (let i=0;i<statuses.length;i++){
-            console.log(order.staus)
+            
             if(stepCompleted){
                 statuses[i].classList.add("step-completed")
             }
@@ -40,17 +43,8 @@ const Singleorder = () => {
                
             }
         }
-        // console.log(statuses[0])
-    //     const arr=[...statuses]
-    // //    console.log(arr)
-    //     arr.map((item , i) =>{
-          
-    //         if(item.innerText === order.staus){
-    //             // setStepCompleted(false)  
-    //            console.log(statuses)
-    //         }
-    //     })
     },[order])
+
 
 
     return (
