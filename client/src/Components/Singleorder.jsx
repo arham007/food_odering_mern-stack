@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import "./singleorder.css"
-
+import {io} from "socket.io-client"
 
 const Singleorder = () => {
    
     let [order,setOrder]=useState({});
+    const [socket,setSocket]=useState("")
     let [stepCompleted,setStepCompleted]=useState(true)
     let params=useParams()
    
-    
-    
+    useEffect(()=>{
+        setSocket(io("http://localhost:5000"))
+    },[])
+        
     useEffect(()=>{
         fetch("http://localhost:4000/singleorderdetails",{
             method:"Post",
