@@ -4,12 +4,23 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-
+import {io} from "socket.io-client"
 
 const Currentorders = () => {
     const [age, setAge] =useState('');
     const [id,setId]=useState("")
+    const [socket,setSocket]=useState(null)
     const [data,setData]=useState("")
+
+    useEffect(()=>{
+        setSocket(io("http://localhost:5000"))
+    },[])
+    useEffect(()=>{
+        socket?.emit('orderDetails',{
+            id,
+            age
+        })
+    },[socket])
     useEffect(()=>{
         fetch("http://localhost:4000/admin/currentorders")
         .then(res=>res.json())
@@ -86,10 +97,14 @@ const Currentorders = () => {
                                                 <Select
                                                     
                                                     id="demo-simple-select-standard"
-                                                    value={item.staus}
+                                                    value={age}
                                                     onChange={(e) =>{
                                                         setAge(e.target.value)
                                                         setId(item._id)
+                                                        socket?.emit('orderDetails',{
+                                                            id:item._id,
+                                                            age:e.target.value
+                                                        })
                                                     }}
                                                    size="large"
                                                    style={{fontSize:"15px",marginBottom:"30px",width:"100%"}}

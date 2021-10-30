@@ -5,6 +5,16 @@ const io=require("socket.io")(5000,{
 });
 
 io.on("connection",(socket)=>{
-    console.log("a new user connected")
+   socket.on('join',(data)=>{
+    socket.join(data.id)                                                                                 
+   })
+
+   socket.on('orderDetails',(data)=>{
+       console.log(data)
+       io.to(data.id).emit('orderUpdated',data)
+
+   })
 })
 
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
